@@ -51,7 +51,7 @@ mkdir -p /etc/service/Dropbox
 cat <<'EOT' > /etc/service/Dropbox/run
 #!/bin/bash
 umask 000
-chown -R nobody:users /home
+find /home -not \( -user nobody -a -group users \) -exec chown nobody:users {} +
 
 #  Dropbox did not shutdown properly? Remove files.
 [ ! -e "/home/.dropbox/command_socket" ] || rm /home/.dropbox/command_socket
