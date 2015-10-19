@@ -119,7 +119,8 @@ chmod +x /opt/*.sh /opt/dropbox_status.py
 
 # Install Dropbox
 curl -k -L "https://www.dropbox.com/download?plat=lnx.x86_64" | tar -xzf - -C /home
-chown -R nobody:users /home
+find /home -not \( -user nobody -a -group users \) -exec chown nobody:users {} +
+chmod a+rx /home/Dropbox
 
 #########################################
 ##                 CLEANUP             ##

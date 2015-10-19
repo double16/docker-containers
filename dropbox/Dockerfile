@@ -18,7 +18,8 @@ CMD ["supervisord", "-c", "/etc/supervisor.conf", "-n"]
 #########################################
 
 COPY * /tmp/
-RUN chmod +x /tmp/install.sh && /tmp/install.sh && rm /tmp/install.sh
+RUN chmod +x /tmp/install.sh
+RUN /tmp/install.sh && rm /tmp/install.sh
 
 #########################################
 ##         EXPORTS AND VOLUMES         ##
